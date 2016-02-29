@@ -1,0 +1,28 @@
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.cabecalho{
+	height: 100px;
+	margin-top: 0px;
+}
+.formulario{
+	height: 300px;
+	margin-top: 40px;
+}
+
+.rodape{
+	height: 150px;
+	margin-bottom: 0px;
+	margin-top: 25px;
+}
+
+.cadastro{
+	border: solid blue 0.5px;
+	border-radius: 10px 0px 0px 10px;
+}
+
+a:link{
+	text-decoration: none;
+}

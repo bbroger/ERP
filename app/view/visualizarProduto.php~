@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+	<title>Visualizar Produtos - O Caeira - Web Estoque</title>
+	<link rel="stylesheet" type="text/css" href="../model/css/bootstrap.css">
+	<meta charset="utf-8">
+
+
+	<script type="text/javascript">
+			function voltar(){
+				alert("Voltando!");
+					window.location.href=('../');
+			}
+	</script>
+	</head>
+
+	<body class="container cadastro">
+
+	<div  class="col-xs-12">
+
+		<div class="panel panel-default">
+
+			<div class="panel-heading">
+			<h1 > Produtos - O Caeira</h1><a href="../">retornar página principal</a>
+			</div>
+			<h3>Informações -  Produtos</h3>
+			<div class="panel-body">
+				<!-- Aqui sera a consulta do mysql -->
+				<table class="table table-hover">
+					<thead>
+						<th>#</th>
+						<th>Código</th>
+						<th>Nome</th>
+						<th>Descrição</th>
+						<th>Quantidade</th>
+						<th>Sessão</th>
+						<th>Preço Compra</th>
+						<th>Preço Venda</th>
+						<th>Data Vencimento</th>
+						<th>Data</th>
+						<th></th>
+					</thead>
+					
+			    	 <tbody>
+					<?php 
+					$conecta = mysql_connect("localhost", "root", "") or print (mysql_error()); 
+					mysql_select_db("ocaeira", $conecta) or print(mysql_error()); 
+$sql = "SELECT nomeProd,descProd,qtdProd,sessaoProd,prcCompra,prcVenda,dataVenc,data FROM produtos"; 
+						        $result = mysql_query($sql, $conecta); 
+						     
+						        /* Escreve resultados até que não haja mais linhas na tabela */ 
+						        while( $consulta = mysql_fetch_assoc($result)) {
+						           ///print "<td>$consulta[idProd]</td>";
+						           print "<td>$consulta[codProd]</td>";
+						           print "<td>$consulta[nomeProd]</td>"; 
+						           print "<td>$consulta[descProd]</td>";
+						           print "<td>$consulta[qtdProd]</td>"; 
+						           print "<td>$consulta[sessaoProd]</td>";
+						           print "<td>$consulta[prcCompra]</td>";
+						           print "<td>$consulta[prcVenda]</td>";
+						           print "<td>$consulta[dataVenc]</td>";
+						           print "<td>$consulta[data]</td>";
+						           print "</tbody>";
+						         } 
+					    		print "</table>";
+						        //mysql_free_result($result); 
+						        mysql_close($conecta); 
+						     ?>
+	
+			</div>
+		</div>
+	</div>
+<?php
+	require_once('../model/footer.php');
+?>
